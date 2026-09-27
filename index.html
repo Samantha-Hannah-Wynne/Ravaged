@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101813" />
+  <meta name="description" content="Ravaged — a choice-driven survival game by Samantha Hannah Wynne. Search the abandoned city, gather supplies, and find a way out before the dark finds you." />
+  <title>Ravaged — Survive the night</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to game</a>
+  <header class="masthead">
+    <a href="./" class="brand">R<span> / RAVAGED</span><span class="sr-only"> home</span></a>
+    <span class="edition">A SURVIVAL STORY BY SAMANTHA WYNNE</span>
+    <button id="help-button" class="quiet-button">How to play <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main id="main">
+    <section class="intro" id="intro" aria-labelledby="title">
+      <div class="forest-art" aria-hidden="true"><div class="moon"></div><i></i><i></i><i></i><i></i><i></i><i></i><div class="fog"></div></div>
+      <div class="intro-content">
+        <p class="eyebrow">THE CITY DOESN’T SLEEP. NEITHER CAN YOU.</p>
+        <h1 id="title">RAVAGED<span>.</span></h1>
+        <p class="intro-copy">The streets are empty. The shadows aren’t.<br />Every choice brings you closer to dawn—or deeper into the dark.</p>
+        <form id="start-form">
+          <label for="player-name">WHAT SHOULD WE CALL YOU, SURVIVOR?</label>
+          <div class="start-controls"><input id="player-name" name="name" placeholder="Your name" maxlength="40" autocomplete="nickname" required /><button type="submit" id="start-button" class="primary-button" disabled>Enter the city <span aria-hidden="true">→</span></button></div>
+        </form>
+        <p id="runtime-status" class="runtime-status" role="status">Preparing the Python game engine…</p>
+        <div class="load-error" id="load-error" hidden><p id="error-message" role="alert"></p><button class="quiet-button" id="retry-button">Try loading again ↻</button></div>
+        <p class="runtime-note">A real Python game, running in your browser. First load downloads the game runtime.<br />No account. No installs. No progress saved after you leave.</p>
+      </div>
+      <div class="intro-footer"><span>FIND SUPPLIES</span><span>TRUST YOUR INSTINCTS</span><span>MAKE IT TO DAWN</span></div>
+    </section>
+
+    <section id="game-screen" class="game-screen" aria-label="Ravaged game" hidden>
+      <div class="game-topline"><span class="eyebrow">SURVIVOR <strong id="survivor-name"></strong></span><button class="quiet-button" id="restart-button">New story ↻</button></div>
+      <div class="game-layout">
+        <aside class="survivor-panel" aria-label="Survivor status">
+          <div class="status-block"><span class="eyebrow">VITALS</span><div class="health-number"><span id="health-value">100</span><span>/ 100</span></div><progress id="health-bar" value="100" max="100" aria-label="Health"></progress><p id="health-description">Still standing.</p></div>
+          <div class="status-block"><span class="eyebrow">YOUR SURROUNDINGS</span><p id="location" class="location">Street</p><p id="enemy-status" hidden></p></div>
+          <div class="status-block inventory-block"><span class="eyebrow">IN YOUR BAG</span><ul id="inventory"></ul><p id="empty-inventory">Nothing. Not yet.</p></div>
+        </aside>
+        <article class="story-panel">
+          <div class="story-topline"><span class="scene-label" id="scene-label">PROLOGUE</span><span class="chapter-mark" aria-hidden="true">✳</span></div>
+          <div id="story-announcement" aria-live="polite" aria-atomic="true"><div id="narrative"></div><h2 id="prompt" tabindex="-1">What will you do?</h2></div>
+          <div id="choices" class="choices" aria-label="Available choices"></div>
+          <div id="ending-panel" class="ending-panel" hidden><span id="ending-label" class="eyebrow"></span><button class="primary-button" id="play-again">Another way through →</button></div>
+          <p class="game-hint">No timer. Take a breath. Choose your next move.</p>
+          <p class="game-error" id="game-error" role="alert" hidden></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><span>RAVAGED / A SAMANTHA HANNAH WYNNE PROJECT</span><span>BUILT WITH PYTHON. DRIVEN BY YOUR CHOICES.</span></footer>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title">Survival, one choice at a time.</h2><button class="quiet-button" id="close-help" aria-label="Close instructions">✕</button></div><p>Explore the streets, gather supplies, and find a safe route out. A flashlight and ammo will help you make it through the night—but clear any danger in your way before you escape.</p><ul><li><strong>Explore</strong> to discover routes, supplies, and encounters.</li><li><strong>Rest</strong> to recover up to 15 health. A medkit restores up to 30 when you choose to use it.</li><li><strong>Fight</strong> to wear down a zombie, or run at a cost of 10 health.</li><li><strong>Use ammo</strong> during an encounter to get away. Checking it in your bag does not consume it.</li><li>Use a mouse, touch, or Tab and Enter to choose. There is no timer.</li></ul><p>Your progress stays in memory only. Refreshing the page or starting a new story resets it.</p></dialog>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><h2 id="restart-title">Leave this story behind?</h2><p>Starting again resets your health, inventory, and choices. Your current progress won’t be saved.</p><div class="dialog-actions"><button class="quiet-button" id="cancel-restart" autofocus>Keep playing</button><button class="primary-button" id="confirm-restart">Start again</button></div></dialog>
+  <noscript><p class="noscript">This browser edition needs JavaScript to run Python. Enable JavaScript, or run the downloadable source with Python 3.</p></noscript>
+  <script type="module" src="web.js"></script>
+</body>
+</html>
