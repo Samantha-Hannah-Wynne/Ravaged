@@ -4,6 +4,8 @@ A choice-driven zombie survival game by **Samantha Hannah Wynne**. Explore an ab
 
 The terminal and browser editions run the **same Python engine**. There is no separate JavaScript rewrite of the game rules.
 
+**[Play Ravaged online](https://samantha-hannah-wynne.github.io/Ravaged/)**
+
 ## Play in the terminal
 
 Requires Python 3. No packages need to be installed.
